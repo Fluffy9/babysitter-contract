@@ -150,6 +150,7 @@ contract BabySitter {
         if(reward > price){
             CudlFinance.buyAccesory(id,food);
             Distribute(_parent, reward-price);
+            return;
         }
         Cudl.transferFrom(_parent, address(this), price-reward);
         CudlFinance.buyAccesory(id,food);
