@@ -157,7 +157,7 @@ contract BabySitter {
     // Distributes the cudl reward among parties to claim later
     function Distribute(address _parent, uint256 reward) private {
         //Keep 20%
-        uint shareForX = reward * percentage / 10000;
+        uint256 shareForX = reward * percentage / 10000;
         pendingRewards[_parent] += reward-shareForX;
         pendingRewards[address(this)] += shareForX;
     }
