@@ -147,6 +147,7 @@ contract BabySitter {
         uint256 reward = Claim(id);
         uint256 price = CudlFinance.itemPrice(food);
         (, , , , , , , , address _parent, , ,) = CudlFinance.getPetInfo(id);
+        Cudl.approve(0x58b1422b21d58Ae6073ba7B28feE62F704Fc2539, price);
         if(reward > price){
             CudlFinance.buyAccesory(id,food);
             Distribute(_parent, reward-price);
