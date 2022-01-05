@@ -89,7 +89,7 @@ interface ICudlFinance {
 
 contract BabySitter {
     address public owner;
-    uint256 public percentage;
+    uint256 public percentage = 2000;
     mapping (address => uint) public pendingRewards;
     IERC20 Cudl = IERC20(0x72C546FFABa89b269C4290698D8f106f05e090Fe);
     ICudlFinance CudlFinance = ICudlFinance(0x58b1422b21d58Ae6073ba7B28feE62F704Fc2539);
