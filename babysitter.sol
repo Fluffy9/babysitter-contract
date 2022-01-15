@@ -28,6 +28,8 @@ interface ICudlFinance {
   function claimMiningRewards ( uint256 nftId ) external;
   function getPetInfo ( uint256 _nftId ) external view returns ( uint256 _pet, bool _isStarving, uint256 _score, uint256 _level, uint256 _expectedReward, uint256 _timeUntilStarving, uint256 _lastTimeMined, uint256 _timepetBorn, address _owner, address _token, uint256 _tokenId, bool _isAlive );
   function itemPrice ( uint256 ) external view returns ( uint256 );
+  function setCareTaker ( uint256 _tokenId, address _careTaker, bool clearCareTaker ) external;
+
 }
 
 contract BabySitter {
@@ -99,4 +101,10 @@ contract BabySitter {
         pendingRewards[address(this)] = 0;
         Cudl.transfer(owner, amount);
     }   
+    // Sets the caretakers of all current pets to a new address
+    function Upgrade(uint256[] calldata ids, address caretaker) onlyOwner external {
+        for(uint256 i = 0; i < ids.length; i++){
+            CudlFinance.setCareTaker(ids[i], caretaker, false);
+        }
+    }
 }
